@@ -1,0 +1,19 @@
+resource : https://github.com/clearpathrobotics/cpr_gazebo
+
+catkin_make fix :
+catkin_make_isolated -DPYTHON_EXECUTABLE=/usr/bin/python3
+
+to launch gazebo :
+roslaunch cpr_inspection_gazebo inspection_world.launch platform:=jackal
+
+to install the tele-twistop-controller:
+sudo apt install ros-noetic-teleop-twist-keyboard
+
+to run the teleop twist keyboard:
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/cmd_vel
+
+to install the twist mux controller:
+sudo apt install ros-noetic-teleop-twist-joy
+
+to launch the twist mux controller :
+rosrun rqt_gui rqt_gui -s rqt_robot_steering
