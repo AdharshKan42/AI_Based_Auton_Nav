@@ -1,6 +1,6 @@
 resource : https://github.com/clearpathrobotics/cpr_gazebo
 
-### catkin_make fix :
+### ~~catkin_make fix~~ Not necessary anymore if you follow Rover VM setup steps :
 `catkin_make_isolated -DPYTHON_EXECUTABLE=/usr/bin/python3`
 
 ### Before running any ROS commands:
@@ -8,26 +8,49 @@ resource : https://github.com/clearpathrobotics/cpr_gazebo
 roscore
 ```
 
-### To add a depth camera to Jackal:
+## Package Setup and Build
+### Install ROS dependencies:
+```
+rosdep update
+```
+
+Run `rosdep install` outside of src directory
+```
+rosdep install --from-paths src --ignore-src -r
+```
+
+### Build ROS packages
+Run this outside `build`, `devel`, `src` in `catkin_ws`:
+```
+catkin_make
+```
+
+### Before running any ROS command
+Make sure to run this in your terminal:
+```
+source devel/setup.zsh 
+```
+or 
+```
+source devel/setup.bash
+```
+depending on your shell.
+
+## Running Commands
+### To add a Realsense depth camera to Jackal:
 Reference: https://www.clearpathrobotics.com/assets/guides/kinetic/jackal/description.html
 
-Find the jackal_gazebo package path using:    
+Run this in any terminal used to launch the simulation:
 ```
-rospack find jackal_gazebo
-```  
-Move to this path: 
+export JACKAL_URDF_EXTRAS=<path-to-jackal_realsense.urdf.xacro>
 ```
-cd Path-To-Jackal-Gazebo/launch
-```
-In `...jackal_gazebo/launch/description.launch`, change the default `config` argument to be `front_bumblebee2`  
-You can now launch Gazebo and should see the camera on top of Jackal. 
 
-### to launch gazebo:  
+### To launch gazebo:  
 ```
 roslaunch cpr_inspection_gazebo inspection_world.launch platform:=jackal
 ```  
 
-### to launch rviz and view the robot and its transforms:
+### To launch rviz and view the robot and its transforms:
 ```
 roslaunch jackal_viz view_robot.launch
 ```
