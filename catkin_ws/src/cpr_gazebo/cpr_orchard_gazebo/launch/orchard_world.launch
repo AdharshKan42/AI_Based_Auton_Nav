@@ -1,0 +1,37 @@
+<launch>
+    <param name="orchard_geom" command="$(find xacro)/xacro --inorder '$(find cpr_orchard_gazebo)/urdf/orchard_geometry.urdf.xacro'" />
+
+    <arg name="platform" default="$(optenv CPR_GAZEBO_PLATFORM husky)" />
+
+    <arg name="robot_x" default="-11.0"/>
+    <arg name="robot_y" default="9.0"/>
+    <arg name="robot_z" default="0.2"/>
+    <arg name="robot_yaw" default="1.5707963267948966" />
+
+    <arg name="world_x" default="0.0"/>
+    <arg name="world_y" default="0.0"/>
+    <arg name="world_z" default="0.0"/>
+    <arg name="world_yaw" default="0.0"/>
+
+    <arg name="use_sim_time" default="true" />
+    <arg name="gui" default="true" />
+    <arg name="headless" default="false" />
+    <arg name="world_name" default="$(find cpr_orchard_gazebo)/worlds/actually_empty_world.world" />
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="debug" value="0" />
+      <arg name="gui" value="$(arg gui)" />
+      <arg name="use_sim_time" value="$(arg use_sim_time)" />
+      <arg name="headless" value="$(arg headless)" />
+      <arg name="world_name" value="$(arg world_name)" />
+    </include>
+
+    <node name="orchard_gazebo_spawner" pkg="gazebo_ros" type="spawn_model"
+      args="-urdf -model orchard_geometry -param orchard_geom -x $(arg world_x) -y $(arg world_y) -z $(arg world_z) -Y $(arg world_yaw)" />
+
+    <include file="$(find cpr_orchard_gazebo)/launch/spawn_$(arg platform).launch">
+      <arg name="x" value="$(arg robot_x)"/>
+      <arg name="y" value="$(arg robot_y)"/>
+      <arg name="z" value="$(arg robot_z)"/>
+      <arg name="yaw" value="$(arg robot_yaw)"/>
+    </include>
+</launch>
