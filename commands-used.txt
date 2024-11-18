@@ -1,2 +1,3 @@
 roslaunch cpr_inspection_gazebo inspection_world.launch platform:=jackal
+roslaunch jackal_navigation gmapping_demo.launch scan_topic:=lidar/scan
 

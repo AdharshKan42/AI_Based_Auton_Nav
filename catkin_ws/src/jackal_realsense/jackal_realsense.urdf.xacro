@@ -1,6 +1,15 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <!-- Material Definitions -->
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <material name="grey">
+    <color rgba="0.5 0.5 0.5 1"/>
+  </material>
+
   <link name="front_realsense" />
 
   <link name="front_realsense_gazebo" />
@@ -40,16 +49,6 @@
         <frameName>front_realsense_gazebo</frameName>
         <pointCloudCutoff>0.105</pointCloudCutoff>
         <pointCloudCutoffMax>8.0</pointCloudCutoffMax>
-        <distortionK1>0.00000001</distortionK1>
-        <distortionK2>0.00000001</distortionK2>
-        <distortionK3>0.00000001</distortionK3>
-        <distortionT1>0.00000001</distortionT1>
-        <distortionT2>0.00000001</distortionT2>
-        <CxPrime>0</CxPrime>
-        <Cx>0</Cx>
-        <Cy>0</Cy>
-        <focalLength>0</focalLength>
-        <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
   </gazebo>
