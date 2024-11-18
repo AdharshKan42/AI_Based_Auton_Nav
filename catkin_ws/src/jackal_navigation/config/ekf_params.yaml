@@ -1,0 +1,111 @@
+frequency: 30
+sensor_timeout: 0.1
+two_d_mode: true
+
+odom0: /odom
+odom0_config: [true, true, false, false, false, true, false, false, false]
+odom0_pose_rejection_threshold: 2.0
+odom0_twist_rejection_threshold: 2.0
+odom0_pose_covariance: [0.1, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 0, 0, 0.2]
+odom0_twist_covariance: [0.1, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 0, 0, 0.2]
+
+imu0: /imu/data
+imu0_config: [false, false, false, false, false, true, false, false, false]
+imu0_differential: false
+imu0_queue_size: 5
+imu0_pose_rejection_threshold: 0.8
+imu0_twist_rejection_threshold: 0.8
+imu0_linear_acceleration_covariance: [0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.1]
+imu0_angular_velocity_covariance: [0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
