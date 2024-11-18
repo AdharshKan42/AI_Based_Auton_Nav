@@ -1,0 +1,2 @@
+roslaunch cpr_inspection_gazebo inspection_world.launch platform:=jackal
+
