@@ -1,0 +1,19 @@
+<launch>
+    <!-- Load EKF parameters -->
+    <rosparam file="$(find jackal_navigation)/config/ekf_params.yaml" command="load" />
+
+    <!-- Start the EKF Node -->
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_filter_node" output="screen">
+        <param name="odom0" value="/odom" />
+        <param name="imu0" value="/imu/data" />
+        <param name="frequency" value="30" />
+        <!-- Adjust rejection thresholds based on sensor accuracy -->
+        <param name="odom0_pose_rejection_threshold" value="2.0" />
+        <param name="odom0_twist_rejection_threshold" value="2.0" />
+        <param name="imu0_pose_rejection_threshold" value="0.8" />
+        <param name="imu0_twist_rejection_threshold" value="0.8" />
+    </node>
+</launch>
+
+
+
