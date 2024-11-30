@@ -1,0 +1,4 @@
+<node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" output="screen">
+    <param name="frequency" value="30"/>
+    <rosparam file="$(find jackal_navigation)/config/ekf.yaml" command="load"/>
+</node>
