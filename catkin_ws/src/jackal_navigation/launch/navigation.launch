@@ -1,0 +1,20 @@
+<launch>
+    <!-- EKF Node -->
+    <!--node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" output="screen">
+        <rosparam file="$(find jackal_navigation)/config/ekf.yaml" command="load"/>
+    </node>-->
+
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" output="screen">
+    <rosparam command="load" file="$(find jackal_navigation)/config/ekf.yaml" />
+    </node>
+
+
+    <!-- RViz Goal Broadcaster -->
+    <node pkg="jackal_navigation" type="rviz_goal_publisher.py" name="rviz_goal_publisher" output="screen"/>
+
+    <!-- Navigation Controller -->
+    <node pkg="jackal_navigation" type="mock_movebase_combined.py" name="jackal_navigation_controller" output="screen"/>
+
+    <!-- RViz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find jackal_navigation)/config/jackal_navigation.rviz"/>
+</launch>
