@@ -165,3 +165,4 @@ catkin_ws/devel/
 
 .idea/
 util/test_output
+*.DS_Store
