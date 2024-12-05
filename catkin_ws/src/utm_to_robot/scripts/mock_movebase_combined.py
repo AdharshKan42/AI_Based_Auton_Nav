@@ -38,8 +38,8 @@ class JackalNavigation:
         angle = math.atan2(dy, dx)
 
         cmd_vel = Twist()
-        cmd_vel.linear.x = min(0.5, 0.5 * distance)
-        cmd_vel.angular.z = 1.0 * angle
+        cmd_vel.linear.x = min(1, 1 * distance)
+        cmd_vel.angular.z = 1.5 * angle
         return cmd_vel, distance
 
     def run(self):
