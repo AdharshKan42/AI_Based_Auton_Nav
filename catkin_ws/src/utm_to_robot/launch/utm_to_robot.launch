@@ -1,0 +1,4 @@
+<launch>
+  <!-- Launch the UTM to Robot Node -->
+  <node name="utm_to_robot" pkg="utm_to_robot" type="utm_to_robot_node.py" output="screen" />
+</launch>
