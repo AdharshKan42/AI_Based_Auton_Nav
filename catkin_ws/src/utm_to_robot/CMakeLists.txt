@@ -212,5 +212,6 @@ catkin_install_python(
     scripts/utm_to_robot_node.py 
     scripts/waypoint_creator.py 
     scripts/mock_movebase_combined.py
+    scripts/yolo_inference.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

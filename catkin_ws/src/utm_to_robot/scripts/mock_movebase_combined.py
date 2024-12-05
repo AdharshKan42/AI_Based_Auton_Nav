@@ -3,7 +3,8 @@
 import rospy
 import math
 import tf2_ros
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Twist, Point
+from std_msgs.msg import Float32
 
 
 class JackalNavigation:
@@ -21,6 +22,11 @@ class JackalNavigation:
         self.goal_frame = "goal"
         self.robot_frame = "base_link"
         self.rate = rospy.Rate(30)
+
+        # Subscriber to green bounding box center
+        self.green_bounding_box_sub = rospy.Subscriber("/green_bounding_box_center", Point, self.green_bounding_box_callback)
+
+        self.green_box_center = None
 
     def get_transform(self):
         try:
@@ -42,9 +48,15 @@ class JackalNavigation:
         cmd_vel.angular.z = 1.5 * angle
         return cmd_vel, distance
 
+    def green_bounding_box_callback(self, msg):
+        # Update the green box center (use only x and y)
+        self.green_box_center = msg
+
     def run(self):
         while not rospy.is_shutdown():
             transform = self.get_transform()
+            cmd_vel = Twist()
+
             if transform:
                 cmd_vel, distance = self.compute_cmd_vel(transform)
 
@@ -52,8 +64,18 @@ class JackalNavigation:
                     cmd_vel = Twist()  # Stop the robot
                     rospy.loginfo("Goal reached")
 
-                self.cmd_vel_pub.publish(cmd_vel)
-                rospy.loginfo(f"Distance to goal: {distance:.2f}")
+            if self.green_box_center:
+                # Adjust robot movement based on the green bounding box center
+                center_x = self.green_box_center.x
+                center_y = self.green_box_center.y
+                rospy.loginfo(f"Center of green bounding box: ({center_x}, {center_y})")
+
+                # For simplicity, use the x coordinate of the bounding box to adjust robot movement
+                # Move towards the center of the green box (for front of the robot)
+                cmd_vel.linear.x = max(0.1, min(1.0, (center_x - 320) / 320))  # Assume image width is 640px
+
+            self.cmd_vel_pub.publish(cmd_vel)
+            rospy.loginfo(f"Distance to goal: {distance:.2f}")
 
             self.rate.sleep()
 
