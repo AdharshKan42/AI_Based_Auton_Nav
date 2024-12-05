@@ -117,11 +117,20 @@ roslaunch jackal_viz view_robot.launch config:=localization
 
 
 ### 3️⃣ AI-Based Navigation
-Integrate the YOLOv8 model for real-time obstacle detection:
+Create a goal waypoint based on the robot's current position.
 ```bash
-python ai_navigation_script.py  # Placeholder for the script
+rosrun utm_to_robot waypoint_creation.py
 ```
 
+Start YOLOv8 Inference on the Realsense Camera
+```bash
+rosrun utm_to_robot yolo_inference.py
+```
+
+Run the navigation algorithm to move towards the goal position
+```bash
+rosrun utm_to_robot mock_movebase_combined.py
+```
 ---
 
 ## 📊 Results
