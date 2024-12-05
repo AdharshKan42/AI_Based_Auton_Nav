@@ -1,67 +1,36 @@
 #!/usr/bin/env python3
 
+import roslib
 import rospy
-from geometry_msgs.msg import PoseStamped
-import tf2_ros
-from geometry_msgs.msg import TransformStamped
+import math
+import tf
+from tf.transformations import quaternion_from_euler, euler_from_quaternion
+from geometry_msgs.msg import Twist, PoseStamped, PointStamped
+from time import time
 
-
-current_goal = PoseStamped()
-current_goal.header.frame_id = "map"
+currentGoal = PoseStamped()
+currentGoal.header.frame_id = "odom"
 
 
 def clicked_point_cb(msg: PoseStamped):
-    global current_goal
-    current_goal = msg
+    currentGoal.pose = msg.pose
 
-
-# if __name__ == "__main__":
-#     rospy.init_node("goal_broadcaster")
-
-#     rospy.Subscriber("/move_base_simple/goal", PoseStamped, clicked_point_cb)
-
-#     transform = TransformStamped()
-#     transform.header.stamp = rospy.Time.now()
-#     transform.header.frame_id = "map"
-#     transform.child_frame_id = "goal"
-#     transform.transform.translation.x = current_goal.pose.position.x
-#     transform.transform.translation.y = current_goal.pose.position.y
-#     transform.transform.translation.z = 0
-#     transform.transform.rotation.x = 0
-#     transform.transform.rotation.y = 0
-#     transform.transform.rotation.z = 0
-#     transform.transform.rotation.w = 1
-
-#     tf_broadcaster.sendTransform(transform)
 
 if __name__ == "__main__":
-    rospy.init_node("goal_broadcaster")
-
-    # Initialize the TransformBroadcaster
-    tf_broadcaster = tf2_ros.TransformBroadcaster()
-
-    # Subscribe to the RViz 2D Goal topic
+    rospy.init_node("mock_rover")
+    tfbroadcaster = tf.TransformBroadcaster()
     rospy.Subscriber("/move_base_simple/goal", PoseStamped, clicked_point_cb)
-
-    # Main loop
-    rate = rospy.Rate(30)
+    rate = rospy.Rate(60)
     while not rospy.is_shutdown():
-        if current_goal:  # If there is a valid goal
-            # Create the TransformStamped message
-            transform = TransformStamped()
-            transform.header.stamp = rospy.Time.now()
-            transform.header.frame_id = "map"
-            transform.child_frame_id = "goal"
-            transform.transform.translation.x = current_goal.pose.position.x
-            transform.transform.translation.y = current_goal.pose.position.y
-            transform.transform.translation.z = 0
-            transform.transform.rotation.x = 0
-            transform.transform.rotation.y = 0
-            transform.transform.rotation.z = 0
-            transform.transform.rotation.w = 1
-
-            # Use tf_broadcaster to send the transform
-            tf_broadcaster.sendTransform(transform)
-
-        # Sleep to maintain the rate
+        tfbroadcaster.sendTransform(
+            (
+                currentGoal.pose.position.x,
+                currentGoal.pose.position.y,
+                currentGoal.pose.position.z,
+            ),
+            (0, 0, 0, 1),
+            rospy.Time.now(),
+            "goal",
+            "map",
+        )
         rate.sleep()

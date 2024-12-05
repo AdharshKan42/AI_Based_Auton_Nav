@@ -4,12 +4,11 @@ import rospy
 import math
 import tf2_ros
 from geometry_msgs.msg import Twist
-from tf2_geometry_msgs import TransformStamped
 
 
 class JackalNavigation:
     def __init__(self):
-        rospy.init_node("jackal_navigation")
+        rospy.init_node("mock_movebase_combined", anonymous=True)
 
         # TF Listener
         self.tf_buffer = tf2_ros.Buffer()
@@ -40,7 +39,7 @@ class JackalNavigation:
 
         cmd_vel = Twist()
         cmd_vel.linear.x = min(0.5, 0.5 * distance)
-        cmd_vel.angular.z = 2.0 * angle
+        cmd_vel.angular.z = 1.0 * angle
         return cmd_vel, distance
 
     def run(self):
@@ -54,6 +53,7 @@ class JackalNavigation:
                     rospy.loginfo("Goal reached")
 
                 self.cmd_vel_pub.publish(cmd_vel)
+                rospy.loginfo(f"Distance to goal: {distance:.2f}")
 
             self.rate.sleep()
 
