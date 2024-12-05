@@ -60,32 +60,61 @@ source devel/setup.bash
 
 ## 🚀 Usage
 
-### 1️⃣ Launching the Simulation
+### 1️⃣ Launching the Simulation and Moving around
 To start the **Gazebo** environment with the Jackal robot:
 ```bash
 roslaunch cpr_inspection_gazebo inspection_world.launch platform:=jackal
 ```
-
-### 2️⃣ Navigation Tasks
-#### SLAM Mapping
+#### Launching RVIZ
 ```bash
-roslaunch jackal_navigation gmapping_demo.launch
-rosrun map_server map_saver -f mymap
+roslaunch jackal_viz view_robot.launch
 ```
 
-#### Localization with AMCL
+#### To move the Bot around
+```bash
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/cmd_vel
+```
+
+#### To Launch the GUI Interface controller :
+```bash
+rosrun rqt_gui rqt_gui -s rqt_robot_steering
+```
+
+#### Camera Output
+```bash
+rosrun rqt_image_view rqt_image_view
+```
+
+### 2️⃣ Traditional Navigation Approach
+#### Launching Gazebo
+```bash
+roslaunch cpr_inspection_gazebo inspection_world.launch platform:=jackal
+```
+
+#### Path Planning and Navigation (Launching gmapping with custom scan topic:)
+```bash
+roslaunch jackal_navigation gmapping_demo.launch scan_topic:=lidar/scan
+```
+```bash
+roslaunch jackal_viz view_robot.launch config:=gmapping
+```
+#### Saving the map :
+```bash
+rosrun map_server map_saver -f mymap
+```
+#### To localize with AMCL :
 ```bash
 roslaunch jackal_navigation amcl_demo.launch map_file:=/path/to/my/map.yaml
 ```
 
-#### Path Planning and Navigation
+#### To start navigation :
 ```bash
 roslaunch jackal_viz view_robot.launch config:=localization
 ```
 
-#### Camera Output and Teleop
+#### Camera Output
 - View camera: `rosrun rqt_image_view rqt_image_view`
-- Keyboard control: `rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/cmd_vel`
+
 
 ### 3️⃣ AI-Based Navigation
 Integrate the YOLOv8 model for real-time obstacle detection:
