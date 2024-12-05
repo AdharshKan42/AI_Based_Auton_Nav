@@ -18,10 +18,10 @@ class UTMTOROVER:
 
         # Subscribers
         self.gps_fix_sub = rospy.Subscriber(
-            "/ublox_gps_node/fix", NavSatFix, self.gps_fix_sub_cb
+            "/navsat/fix", NavSatFix, self.gps_fix_sub_cb
         )
         self.navheading_sub = rospy.Subscriber(
-            "/navheading", Imu, self.navheading_sub_cb
+            "/imu/data", Imu, self.navheading_sub_cb
         )
 
         # TF Broadcaster
@@ -104,7 +104,7 @@ class UTMTOROVER:
                 static_transform.transform.rotation.z = rotation[2]
                 static_transform.transform.rotation.w = rotation[3]
 
-                self.static_tf_broadcaster.sendTransform([static_transform])
+                self.static_tf_broadcaster.sendTransform(static_transform)
         else:
             # Compute UTM->Baselink from sensor,
             # then publish transform MAP->BASELINK based on UTM->MAP and this.
@@ -148,5 +148,6 @@ class UTMTOROVER:
 if __name__ == "__main__":
     try:
         UTMTOROVER()
-    except rospy.ROSInterruptException:
+    except rospy.ROSInterruptException as e:
+        rospy.logerr("Service did not process request: " + str(e))
         pass
