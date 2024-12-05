@@ -151,11 +151,11 @@ python ai_navigation_script.py  # Placeholder for the script
 
 ## 🤝 Contributions
 This project was a collaborative effort by:
-- Adharsh Kandula: Environment setup and AI model integration.
-- Lohith Venkat Chamakura: Implementation of Traditional navigation algorithms.
-- Nishit Popat: Mapping algorithms Pathfinding optimizations.
-- Raghav Mathur: Testing of multiple models and finetuning.
-- Wei Xiang: Data collection and preprocessing, AI model training and evaluation. 
+- @AdharshKan42 Adharsh Kandula: Environment setup and AI model integration.
+- @lowwhit Lohith Venkat Chamakura: Implementation of Traditional navigation algorithms.
+- @nishitpopat Nishit Popat: Mapping algorithms Pathfinding optimizations.
+- @rrrraghav Raghav Mathur: Testing of multiple models and finetuning.
+- @SwordAndTea Wei Xiang: Data collection and preprocessing, AI model training and evaluation. 
 
 ---
 
