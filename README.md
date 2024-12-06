@@ -5,7 +5,17 @@ Welcome to the **Autonomous Navigation** project! This repository demonstrates a
 
 ![Traditional AI Visualization](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/traditionalvai.png)
 
+---
+
 ## Demo Clips :
+
+### Traditional Navigation Demo :
+
+![Traditional Navigation Demo](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/navigationdemo.gif)
+
+### AI Based Approach Demo :
+
+![AI Based Approach Demo](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/segmentdemo.gif)
 
 ---
 
@@ -28,7 +38,9 @@ The **Jackal Robot** was employed in a simulated Gazebo environment, equipped wi
 - 🛠 **Sensors**: LiDAR, Intel RealSense D455, and IMU.
 - 🌐 **Simulation Environment**: Clearpath Robotics' *Inspection World*.
 
-![Placeholder for Gazebo Simulation Screenshot](#) <!-- Replace with actual image link -->
+#### The simulation environment in Gazebo
+
+![Simulation environment Demo](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/segmentdemo.gif)
 
 ---
 
@@ -84,10 +96,17 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/cmd_vel
 rosrun rqt_gui rqt_gui -s rqt_robot_steering
 ```
 
+![RQT Robot Steering](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/rqtrobotsteering.png)
+
 #### Camera Output
 ```bash
 rosrun rqt_image_view rqt_image_view
 ```
+![Raw Camera output](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/rawcameraop.png)
+
+#### Depth Camera Output 
+
+![Depth Camera output](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/depthcameraop.png)
 
 ### 2️⃣ Traditional Navigation Approach
 #### Launching Gazebo
@@ -102,6 +121,8 @@ roslaunch jackal_navigation gmapping_demo.launch scan_topic:=lidar/scan
 ```bash
 roslaunch jackal_viz view_robot.launch config:=gmapping
 ```
+![Mapping Screenshots](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/map-being-generated.png)
+
 #### Saving the map :
 ```bash
 rosrun map_server map_saver -f mymap
@@ -130,6 +151,8 @@ Start YOLOv8 Inference on the Realsense Camera
 ```bash
 rosrun utm_to_robot yolo_inference.py
 ```
+#### Inference Ouput on the Realsense Camera 
+![AI Based approach depth camera op](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/map-being-generated.png)
 
 Run the navigation algorithm to move towards the goal position
 ```bash
@@ -155,10 +178,6 @@ rosrun utm_to_robot mock_movebase_combined.py
 
 ---
 
-## 🙌 Acknowledgements
-- **Clearpath Robotics** for providing the simulation environment.
-- **ROS Community** for robust tools and documentation.
-- AI models powered by **YOLOv8**.
 
 ---
 
@@ -175,7 +194,3 @@ This project was a collaborative effort by:
 **Feel free to contribute!** Submit issues or pull requests to improve this repository. 🎉
 
 ---
-
-## 📸 Image Placeholders
-- **Simulation Environment**: ![Placeholder for simulation](#)
-- **AI Inference Results**: ![Placeholder for inference results](#)
