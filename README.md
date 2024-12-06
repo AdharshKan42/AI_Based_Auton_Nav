@@ -3,6 +3,10 @@
 
 Welcome to the **Autonomous Navigation** project! This repository demonstrates and compares traditional and AI-enhanced navigation methods for robotic systems in simulated environments using **ROS Noetic** and **Gazebo**. 🚀
 
+![Traditional vs ai](https://github.com/AdharshKan42/AI_Based_Auton_Nav/tree/main/images/traditionalvai.png)
+
+## Demo Clips :
+
 ---
 
 ## 📝 Table of Contents
