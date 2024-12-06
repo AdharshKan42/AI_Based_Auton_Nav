@@ -38,9 +38,9 @@ The **Jackal Robot** was employed in a simulated Gazebo environment, equipped wi
 - 🛠 **Sensors**: LiDAR, Intel RealSense D455, and IMU.
 - 🌐 **Simulation Environment**: Clearpath Robotics' *Inspection World*.
 
-#### The simulation environment in Gazebo
+#### The environment in Gazebo :
 
-![Simulation environment Demo](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/segmentdemo.gif)
+![Simulation environment Demo](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/simenv.gif)
 
 ---
 
@@ -96,15 +96,15 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/cmd_vel
 rosrun rqt_gui rqt_gui -s rqt_robot_steering
 ```
 
-![RQT Robot Steering](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/rqtrobotsteering.png)
-
-#### Camera Output
+#### To View Camera Output
 ```bash
 rosrun rqt_image_view rqt_image_view
 ```
+#### RGB Camera Output :
+
 ![Raw Camera output](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/rawcameraop.png)
 
-#### Depth Camera Output 
+#### Depth Camera Output :
 
 ![Depth Camera output](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/depthcameraop.png)
 
@@ -121,6 +121,9 @@ roslaunch jackal_navigation gmapping_demo.launch scan_topic:=lidar/scan
 ```bash
 roslaunch jackal_viz view_robot.launch config:=gmapping
 ```
+
+#### Gmapping output :
+
 ![Mapping Screenshots](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/map-being-generated.png)
 
 #### Saving the map :
@@ -151,8 +154,8 @@ Start YOLOv8 Inference on the Realsense Camera
 ```bash
 rosrun utm_to_robot yolo_inference.py
 ```
-#### Inference Ouput on the Realsense Camera 
-![AI Based approach depth camera op](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/map-being-generated.png)
+#### Inference Ouput on the Realsense Camera  :
+![AI Based approach depth camera op](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/aibasedappcameraop.png)
 
 Run the navigation algorithm to move towards the goal position
 ```bash
@@ -173,9 +176,6 @@ rosrun utm_to_robot mock_movebase_combined.py
 ### Key Insights
 - **Traditional Approach**: Reliable for static environments, struggles with dynamic changes.
 - **AI-Based Approach**: Adapts well to unstructured terrains with efficient navigation.
-
-![Placeholder for results graph](#) <!-- Replace with actual image link -->
-
 ---
 
 
