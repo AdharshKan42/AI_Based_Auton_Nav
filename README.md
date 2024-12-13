@@ -17,7 +17,9 @@ Welcome to the **Autonomous Navigation** project! This repository demonstrates a
 
 ### AI Based Approach Demo :
 
-![AI Based Approach Demo](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/segmentdemo.gif)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/segmentdemo.gif" />
+</p>
 
 ---
 
@@ -42,7 +44,9 @@ The **Jackal Robot** was employed in a simulated Gazebo environment, equipped wi
 
 #### The environment in Gazebo :
 
-![Simulation environment Demo](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/simenv.gif)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/simenv.gif" />
+</p>
 
 ---
 
@@ -104,11 +108,15 @@ rosrun rqt_image_view rqt_image_view
 ```
 #### RGB Camera Output :
 
-![Raw Camera output](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/rawcameraop.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/rawcameraop.png" />
+</p>
 
 #### Depth Camera Output :
 
-![Depth Camera output](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/depthcameraop.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/depthcameraop.png" />
+</p>
 
 ### 2️⃣ Traditional Navigation Approach
 #### Launching Gazebo
@@ -126,7 +134,9 @@ roslaunch jackal_viz view_robot.launch config:=gmapping
 
 #### Gmapping output :
 
-![Mapping Screenshots](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/map-being-generated.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/map-being-generated.png" />
+</p>
 
 #### Saving the map :
 ```bash
@@ -157,7 +167,10 @@ Start YOLOv8 Inference on the Realsense Camera
 rosrun utm_to_robot yolo_inference.py
 ```
 #### Inference Ouput on the Realsense Camera  :
-![AI Based approach depth camera op](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/aibasedappcameraop.png)
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/aibasedappcameraop.png" />
+</p>
 
 Run the navigation algorithm to move towards the goal position
 ```bash
