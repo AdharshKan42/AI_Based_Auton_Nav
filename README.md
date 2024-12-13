@@ -11,6 +11,11 @@ Welcome to the **Autonomous Navigation** project! This repository demonstrates a
 
 ### Traditional Navigation Demo :
 
+![Traditional Navigation Demo]
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/navigationdemo.gif" />
+</p>
+
 ![Traditional Navigation Demo](https://raw.githubusercontent.com/AdharshKan42/AI_Based_Auton_Nav/main/images/navigationdemo.gif)
 
 ### AI Based Approach Demo :
