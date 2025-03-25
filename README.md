@@ -199,7 +199,7 @@ rosrun utm_to_robot mock_movebase_combined.py
 ## 🤝 Contributions
 This project was a collaborative effort by:
 - @AdharshKan42 Adharsh Kandula: Environment setup and AI model integration.
-- @lowwhit Lohith Venkat Chamakura: Implementation of Traditional navigation algorithms.
+- @lowwhit Lohith Venkat Chamakura: Implementation of traditional and AI navigation algorithms.
 - @nishitpopat Nishit Popat: Mapping algorithms Pathfinding optimizations.
 - @rrrraghav Raghav Mathur: Testing of multiple models and finetuning.
 - @SwordAndTea Wei Xiang: Data collection and preprocessing, AI model training and evaluation. 
